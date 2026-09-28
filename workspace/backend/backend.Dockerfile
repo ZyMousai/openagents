@@ -9,7 +9,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install Python dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+#RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir \
+    -i https://mirrors.aliyun.com/pypi/simple/ \
+    -r requirements.txt
 
 # Production uses Browser Fabric (cloud) via BROWSERFABRIC_API_KEY — all
 # browser operations are proxied via REST API, no local Chromium needed.
